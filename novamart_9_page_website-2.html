@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NovaMart — 9 Page Shopping Website</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;background:#f7f7fb;color:#171717}a{text-decoration:none;color:inherit}button{font:inherit;cursor:pointer;border:0}
+.top{background:#171717;color:#fff;text-align:center;padding:9px;font-size:13px}header{background:#fff;position:sticky;top:0;z-index:10;box-shadow:0 2px 12px #0001}.nav{max-width:1200px;margin:auto;padding:15px 20px;display:flex;align-items:center;gap:16px}.logo{font-size:25px;font-weight:800;color:#6c3cff}.logo span{color:#ff5b5b}.search{flex:1;display:flex;background:#f1f1f5;border-radius:28px;overflow:hidden}.search input{width:100%;border:0;background:transparent;padding:13px 18px;outline:none}.search button{padding:0 18px;background:transparent}.navlinks{display:flex;gap:14px;font-size:14px}.navlinks a:hover{color:#6c3cff}.icon{background:#f1f1f5;padding:11px;border-radius:50%;position:relative;cursor:pointer}.badge{position:absolute;right:-3px;top:-4px;background:#ff4d67;color:#fff;font-size:10px;border-radius:20px;padding:3px 6px}
+.page{display:none;max-width:1200px;margin:auto;padding:35px 20px;min-height:70vh}.page.active{display:block}.hero{max-width:1200px;margin:25px auto;padding:0 20px}.hero-box{background:linear-gradient(120deg,#19152e,#6c3cff);color:#fff;border-radius:25px;padding:60px;min-height:330px;display:flex;align-items:center}.hero h1{font-size:48px;max-width:600px;line-height:1.05;margin-bottom:16px}.hero p{font-size:17px;color:#e8e4ff;max-width:550px;line-height:1.6}.motivation{margin-top:18px;font-size:19px;font-weight:700;color:#fff}.menu-btn{display:none;background:#f1f1f5;padding:11px 13px;border-radius:10px;font-size:18px}.mobile-menu{display:none;background:#fff;padding:10px 20px;border-top:1px solid #eee}.mobile-menu a{display:block;padding:12px 0;border-bottom:1px solid #eee}.skip{position:absolute;left:-9999px;top:5px;background:#fff;color:#171717;padding:10px;z-index:100}.skip:focus{left:10px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #ff5b5b;outline-offset:2px}.cta,.buy{display:inline-block;margin-top:20px;background:#6c3cff;color:#fff;padding:13px 22px;border-radius:12px;font-weight:700}.hero .cta{background:#fff;color:#25145f}
+.title{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.categories{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}.cat{background:#fff;border-radius:18px;padding:20px 10px;text-align:center;box-shadow:0 4px 15px #0001;cursor:pointer}.emoji{font-size:35px;margin-bottom:9px}.filters{display:flex;gap:10px;overflow:auto;margin-bottom:20px}.filter{padding:9px 17px;border:1px solid #ddd;background:#fff;border-radius:20px;white-space:nowrap}.filter.active{background:#171717;color:#fff}.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 4px 18px #0001;position:relative;cursor:pointer}.pic{height:220px;display:flex;align-items:center;justify-content:center;font-size:75px}.p1{background:#ffe8ec}.p2{background:#e9e7ff}.p3{background:#e4f8ee}.p4{background:#fff1d9}.info{padding:15px}.rating{font-size:13px;color:#f4a000}.price{font-size:18px;font-weight:800;margin-top:8px}.old{font-size:12px;text-decoration:line-through;color:#999;margin-left:6px;font-weight:normal}.add{width:100%;margin-top:12px;background:#171717;color:#fff;padding:10px;border-radius:10px}.heart{position:absolute;right:12px;top:12px;background:#fff;border-radius:50%;padding:9px;font-size:17px;z-index:2}
+.product-detail{display:grid;grid-template-columns:1fr 1fr;gap:35px;background:#fff;border-radius:22px;padding:30px}.detail-pic{min-height:390px;border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:130px}.detail-info h1{font-size:34px;margin:10px 0}.detail-info p{color:#666;line-height:1.7;margin:15px 0}.secondary{background:#eee;padding:13px 22px;border-radius:12px}.qty{display:flex;align-items:center;gap:12px;margin:20px 0}.qty button{background:#eee;padding:8px 13px;border-radius:8px}
+.cart-list,.box,.success,.order-card{background:#fff;border-radius:18px;padding:22px}.cart-row{display:flex;justify-content:space-between;border-bottom:1px solid #eee;padding:15px 0;gap:10px}.cart-row:last-child{border:0}.checkout{display:grid;grid-template-columns:1.3fr .7fr;gap:20px}.box input{width:100%;padding:12px;margin:7px 0;border:1px solid #ddd;border-radius:9px}.pay{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}.pay label{border:1px solid #ddd;padding:12px;border-radius:10px}.place{width:100%;background:#171717;color:#fff;padding:14px;border-radius:10px;margin-top:12px}.steps{display:flex;justify-content:center;gap:8px;margin-bottom:25px;flex-wrap:wrap}.step{background:#eee;padding:8px 13px;border-radius:20px;font-size:13px}.step.active{background:#6c3cff;color:#fff}.success{text-align:center;padding:55px}.check{font-size:65px}.cart-float{position:fixed;right:20px;bottom:20px;background:#6c3cff;color:#fff;padding:15px 21px;border-radius:30px;display:none;z-index:20}
+footer{background:#171717;color:#fff;margin-top:40px;padding:45px 20px}.foot{max-width:1200px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}.foot p,.foot a{color:#bbb;line-height:1.6;font-size:14px;margin-top:9px}.foot a{display:block}
+@media(max-width:800px){.navlinks{display:none}.menu-btn{display:block}.categories{grid-template-columns:repeat(3,1fr)}.products{grid-template-columns:repeat(2,1fr)}.foot{grid-template-columns:1fr 1fr}.hero-box{padding:35px}.hero h1{font-size:36px}.product-detail,.checkout{grid-template-columns:1fr}}
+@media(max-width:480px){.search{display:none}.categories,.products{grid-template-columns:1fr}.foot{grid-template-columns:1fr}.hero h1{font-size:31px}}
+</style>
+</head>
+<body>
+<div class="top">✨ Welcome to NovaMart — Free shipping on orders above ₹999</div>
+<a class="skip" href="#mainContent">Skip to main content</a><header><div class="nav">
+<a class="logo" href="#" onclick="show('home');return false">Nova<span>Mart</span></a>
+<div class="search"><input id="search" placeholder="Search products..."><button onclick="search()">🔎</button></div>
+<button class="menu-btn" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false" onclick="toggleMenu()">☰</button><nav class="navlinks" aria-label="Main navigation"><a href="#" onclick="show('home');return false">Home</a><a href="#" onclick="show('products');return false">Shop</a><a href="#" onclick="show('categories');return false">Categories</a><a href="#" onclick="show('orders');return false">Orders</a><a href="#" onclick="show('support');return false">Support</a></nav>
+<button class="icon" aria-label="Open shopping cart" onclick="show('cart')">🛒<span class="badge" id="count" aria-live="polite">0</span></button>
+</div><div class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation"><a href="#" onclick="show('home');toggleMenu();return false">Home</a><a href="#" onclick="show('products');toggleMenu();return false">Shop</a><a href="#" onclick="show('categories');toggleMenu();return false">Categories</a><a href="#" onclick="show('orders');toggleMenu();return false">Orders</a><a href="#" onclick="show('cart');toggleMenu();return false">Cart</a><a href="#" onclick="show('support');toggleMenu();return false">Customer Service</a></div></header>
+
+<main id="mainContent">
+<!-- PAGE 1 -->
+<section id="home" class="page active"><div class="hero"><div class="hero-box"><div><h1>Everything you need. All in one place.</h1><p>Shop fashion, electronics, beauty, home essentials and more — with great products at prices you'll love.</p><p class="motivation">✨ Shop smart. Choose confidently. Make every purchase count.</p><a class="cta" href="#" onclick="show('products');return false">Shop Now →</a></div></div></div><h2>Why NovaMart?</h2><div class="products" style="margin-top:18px"><div class="box">🚚<h3>Fast Delivery</h3><p>Quick delivery to your doorstep.</p></div><div class="box">🔒<h3>Secure Payments</h3><p>UPI, cards and COD supported.</p></div><div class="box">↩️<h3>Easy Returns</h3><p>Simple returns on eligible products.</p></div><div class="box">💬<h3>Support</h3><p>We're here whenever you need help.</p></div></div></section>
+
+<!-- PAGE 2 -->
+<section id="categories" class="page"><div class="title"><h2>Shop by Category</h2></div><div class="categories">
+<div class="cat" onclick="cat('Fashion')"><div class="emoji">👕</div><b>Fashion</b></div><div class="cat" onclick="cat('Electronics')"><div class="emoji">📱</div><b>Electronics</b></div><div class="cat" onclick="cat('Beauty')"><div class="emoji">💄</div><b>Beauty</b></div><div class="cat" onclick="cat('Home')"><div class="emoji">🏠</div><b>Home</b></div><div class="cat"><div class="emoji">🎧</div><b>Accessories</b></div><div class="cat"><div class="emoji">🎁</div><b>Gifts</b></div></div></section>
+
+<!-- PAGE 3 -->
+<section id="products" class="page"><div class="title"><h2>All Products</h2></div><div class="filters"><button class="filter active" onclick="filter('All',this)">All</button><button class="filter" onclick="filter('Fashion',this)">Fashion</button><button class="filter" onclick="filter('Electronics',this)">Electronics</button><button class="filter" onclick="filter('Beauty',this)">Beauty</button><button class="filter" onclick="filter('Home',this)">Home</button></div><div class="products" id="grid"></div></section>
+
+<!-- PAGE 4 -->
+<section id="product" class="page"><a href="#" onclick="show('products');return false">← Back to products</a><br><br><div class="product-detail"><div id="detailPic" class="detail-pic p2">🎧</div><div class="detail-info"><div class="rating">★★★★★ 4.8/5</div><h1 id="detailName"></h1><div id="detailPrice" class="price"></div><p id="detailDesc"></p><div class="qty"><b>Quantity:</b><button onclick="qty(-1)">−</button><span id="qty">1</span><button onclick="qty(1)">+</button></div><button class="buy" onclick="buy()">Buy Now</button> <button class="secondary" onclick="addCurrent()">Add to Cart</button></div></div></section>
+
+<!-- PAGE 5 -->
+<section id="cart" class="page"><a href="#" onclick="show('products');return false">← Continue Shopping</a><br><br><h2>Your Shopping Cart</h2><br><div class="cart-list" id="cartList"></div><div style="display:flex;justify-content:space-between;margin-top:18px;align-items:center"><b id="cartTotal">Total: ₹0</b><button class="buy" onclick="checkout()">Proceed to Checkout →</button></div></section>
+
+<!-- PAGE 6 -->
+<section id="address" class="page"><div class="steps"><span class="step active">1. Address</span><span class="step">2. Payment</span><span class="step">3. Confirmation</span></div><div class="box"><h2>Delivery Address</h2><label class="sr-only" for="name">Full Name</label><input id="name" placeholder="Full Name" autocomplete="name"><label class="sr-only" for="phone">Mobile Number</label><input id="phone" placeholder="Mobile Number" autocomplete="tel"><label class="sr-only" for="email">Email Address</label><input id="email" placeholder="Email Address" autocomplete="email"><label class="sr-only" for="house">House, flat or building</label><input id="house" placeholder="House / Flat / Building" autocomplete="street-address"><label class="sr-only" for="street">Street or area</label><input id="street" placeholder="Street / Area"><label class="sr-only" for="city">City</label><input id="city" placeholder="City" autocomplete="address-level2"><label class="sr-only" for="pin">PIN Code</label><input id="pin" placeholder="PIN Code" inputmode="numeric" autocomplete="postal-code"><button class="buy" onclick="payment()">Continue to Payment →</button></div></section>
+
+<!-- PAGE 7 -->
+<section id="payment" class="page"><div class="steps"><span class="step">1. Address</span><span class="step active">2. Payment</span><span class="step">3. Confirmation</span></div><div class="checkout"><div class="box"><h2>Payment</h2><p style="margin:12px 0;color:#666">Demo payment screen — no real money is charged.</p><div class="pay"><label><input type="radio" name="pay" value="UPI" checked> UPI</label><label><input type="radio" name="pay" value="Card"> 💳 Card</label><label><input type="radio" name="pay" value="COD"> 💵 COD</label></div><div id="upi"><input id="upiId" placeholder="Enter UPI ID (example@upi)"></div><div id="card" style="display:none"><input placeholder="Card Number"><input placeholder="MM/YY"><input placeholder="CVV"></div><button class="place" onclick="place()">Pay & Place Order</button></div><div class="box"><h3>Order Summary</h3><div id="summary"></div><hr style="margin:18px 0"><h3>Total: <span id="total">₹0</span></h3></div></div></section>
+
+<!-- PAGE 8 -->
+<section id="success" class="page"><div class="success"><div class="check">✅</div><h1>Order Placed!</h1><p style="margin:15px;color:#666">Your NovaMart order has been received successfully.</p><div class="order-card"><b>Order ID:</b> <span id="oid"></span><br><br><b>Payment:</b> <span id="omethod"></span><br><br><b>Amount:</b> <span id="oamount"></span></div><button class="buy" onclick="show('orders')">Track My Order →</button></div></section>
+
+<!-- PAGE 9 -->
+<section id="orders" class="page">
+<h2>My Orders</h2>
+<div class="order-card" id="orderBox" style="margin-top:20px">No orders yet.</div>
+<br>
+<button class="secondary" onclick="show('products')">Continue Shopping</button>
+<button class="buy" onclick="show('support')">Customer Service</button>
+</section>
+
+<section id="support" class="page">
+<a href="#" onclick="show('orders');return false">← Back to Orders</a><br><br>
+<div class="box">
+<h2>Customer Service 💬</h2>
+<p style="margin:10px 0;color:#666">How can we help you today?</p>
+<div class="products" style="margin-top:18px">
+<div class="box"><h3>📦 Track an Order</h3><p style="margin:8px 0">Check your latest order status from My Orders.</p><button class="buy" onclick="show('orders')">My Orders</button></div>
+<div class="box"><h3>↩️ Returns & Refunds</h3><p style="margin:8px 0">Get help with eligible returns and refunds.</p><button class="secondary" onclick="alert('Return request support: please contact NovaMart support.')">Get Help</button></div>
+<div class="box"><h3>💬 Live Support</h3><p style="margin:8px 0">Chat with our support team.</p><button class="secondary" onclick="alert('Demo: live chat would open here.')">Start Chat</button></div>
+<div class="box"><h3>📧 Contact Us</h3><p style="margin:8px 0">Email: support@novamart.example</p><button class="secondary" onclick="alert('Demo contact: support@novamart.example')">Contact Support</button></div>
+</div>
+</div>
+</section>
+
+</main><footer><div class="foot"><div><div class="logo">Nova<span>Mart</span></div><p>Your modern online marketplace.</p></div><div><h3>Shop</h3><a href="#" onclick="show('products');return false">Products</a><a href="#" onclick="show('categories');return false">Categories</a></div><div><h3>Help</h3><a href="#">Contact Us</a><a href="#">Returns</a></div><div><h3>Account</h3><a href="#" onclick="show('cart');return false">Cart</a><a href="#" onclick="show('orders');return false">Orders</a><a href="#" onclick="show('support');return false">Customer Service</a></div></div></footer>
+<div class="cart-float" id="floatCart" onclick="show('cart')">🛒 <span id="cartText">0 items</span></div>
+
+<script>
+const P=[
+{name:'Urban Sneakers',price:1499,old:2199,emoji:'👟',cat:'Fashion',cls:'p1',desc:'Comfortable everyday sneakers with a clean urban look.'},
+{name:'Wireless Headphones',price:2499,old:3499,emoji:'🎧',cat:'Electronics',cls:'p2',desc:'Premium wireless headphones with clear sound.'},
+{name:'Glow Beauty Set',price:899,old:1299,emoji:'🧴',cat:'Beauty',cls:'p3',desc:'A convenient beauty set for everyday self-care.'},
+{name:'Modern Home Decor',price:699,old:999,emoji:'🪴',cat:'Home',cls:'p4',desc:'Modern decor to add a fresh touch to your home.'},
+{name:'Smart Watch',price:2999,old:3999,emoji:'⌚',cat:'Electronics',cls:'p2',desc:'A stylish smart watch for everyday use.'},
+{name:'Classic Hoodie',price:1199,old:1799,emoji:'🧥',cat:'Fashion',cls:'p1',desc:'Soft and comfortable casual hoodie.'},
+{name:'Desk Lamp',price:799,old:1099,emoji:'💡',cat:'Home',cls:'p4',desc:'Minimal desk lamp with a warm modern look.'},
+{name:'Perfume Gift Set',price:1299,old:1899,emoji:'🌸',cat:'Beauty',cls:'p3',desc:'A fragrance gift set for special occasions.'}
+];
+let cartItems=[],current=P[1],q=1,last=null;
+const money=n=>'₹'+n.toLocaleString('en-IN');
+function show(id){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');scrollTo(0,0);if(id==='cart')renderCart();if(id==='payment')renderSummary();if(id==='orders')renderOrders()}
+function toggleMenu(){let m=document.getElementById("mobileMenu"),b=document.getElementById("menuBtn");let open=m.style.display==="block";m.style.display=open?"none":"block";b.setAttribute("aria-expanded",String(!open));b.setAttribute("aria-label",open?"Open navigation menu":"Close navigation menu")}
+function render(list=P){document.getElementById('grid').innerHTML=list.map((p,i)=>`<div class="card" onclick="openP(${i})"><button class="heart" onclick="event.stopPropagation();this.textContent=this.textContent==='♡'?'♥':'♡'">♡</button><div class="pic ${p.cls}">${p.emoji}</div><div class="info"><h3>${p.name}</h3><div class="rating">★★★★★</div><div class="price">${money(p.price)} <span class="old">${money(p.old)}</span></div><button class="add" onclick="event.stopPropagation();add(${i})">Add to Cart</button></div></div>`).join('')}
+function filter(c,b){document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');render(c==='All'?P:P.filter(x=>x.cat===c))}
+function cat(c){show('products');let b=[...document.querySelectorAll('.filter')].find(x=>x.textContent===c);if(b)filter(c,b)}
+function search(){let q=document.getElementById('search').value.toLowerCase();show('products');render(P.filter(x=>(x.name+' '+x.cat).toLowerCase().includes(q)))}
+document.getElementById('search').addEventListener('keyup',e=>{if(e.key==='Enter')search()});
+function openP(i){current=P[i];q=1;document.getElementById('detailName').textContent=current.name;document.getElementById('detailPrice').textContent=money(current.price);document.getElementById('detailDesc').textContent=current.desc;document.getElementById('detailPic').textContent=current.emoji;document.getElementById('detailPic').className='detail-pic '+current.cls;document.getElementById('qty').textContent=1;show('product')}
+function qty(n){q=Math.max(1,q+n);document.getElementById('qty').textContent=q}
+function add(i){cartItems.push(P[i]);update();alert(P[i].name+' added to cart!')}
+function addCurrent(){for(let i=0;i<q;i++)cartItems.push(current);update();alert(current.name+' added to cart!')}
+function buy(){addCurrent();checkout()}
+function update(){let n=cartItems.length;document.getElementById('count').textContent=n;document.getElementById('cartText').textContent=n+(n===1?' item':' items');document.getElementById('floatCart').style.display=n?'block':'none'}
+function renderCart(){let total=cartItems.reduce((s,x)=>s+x.price,0);document.getElementById('cartTotal').textContent='Total: '+money(total);document.getElementById('cartList').innerHTML=cartItems.length?cartItems.map((x,i)=>`<div class="cart-row"><span>${x.emoji} <b>${x.name}</b></span><span>${money(x.price)} <button onclick="removeItem(${i})">✕</button></span></div>`).join(''):'<p>Your cart is empty.</p>'}
+function removeItem(i){cartItems.splice(i,1);update();renderCart()}
+function checkout(){if(!cartItems.length)return alert('Your cart is empty.');show('address')}
+function payment(){for(let id of ['name','phone','house','street','city','pin'])if(!document.getElementById(id).value.trim())return alert('Please complete all delivery details.');show('payment')}
+function renderSummary(){let t=cartItems.reduce((s,x)=>s+x.price,0);document.getElementById('summary').innerHTML=cartItems.map(x=>`<p style="margin:9px 0">${x.emoji} ${x.name} — ${money(x.price)}</p>`).join('');document.getElementById('total').textContent=money(t)}
+document.querySelectorAll('input[name=pay]').forEach(r=>r.addEventListener('change',()=>{let v=document.querySelector('input[name=pay]:checked').value;document.getElementById('upi').style.display=v==='UPI'?'block':'none';document.getElementById('card').style.display=v==='Card'?'block':'none'}));
+function place(){let m=document.querySelector('input[name=pay]:checked').value;if(m==='UPI'&&!document.getElementById('upiId').value.trim())return alert('Please enter your UPI ID.');let t=cartItems.reduce((s,x)=>s+x.price,0);last={id:'NM'+Date.now().toString().slice(-8),method:m,total:t,name:document.getElementById('name').value};document.getElementById('oid').textContent=last.id;document.getElementById('omethod').textContent=m;document.getElementById('oamount').textContent=money(t);cartItems=[];update();show('success')}
+function renderOrders(){document.getElementById('orderBox').innerHTML=last?`<h3>Order ${last.id}</h3><p style="margin:10px 0">Customer: ${last.name}</p><p>Payment: ${last.method}</p><p>Total: <b>${money(last.total)}</b></p><p style="margin-top:15px">Status: <b>Order Confirmed</b> → Preparing → Shipped → Delivered</p>`:'No orders yet.'}
+render();
+</script>
+</body>
+</html>
